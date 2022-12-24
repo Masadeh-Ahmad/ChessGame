@@ -52,6 +52,9 @@ public class ChessBoard {
         }
         System.out.println("   a   b   c   d   e   f   g   h");
     }
+    public Position[][] getBoard(){
+        return this.positions;
+    }
 //    public Piece piece(Integer row, Integer column){
 //        if(!positionExists(row, column)){
 //            throw new RuntimeException("This position does not exist");

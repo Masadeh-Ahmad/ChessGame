@@ -1,6 +1,7 @@
 package pieces;
 
 
+import board.ChessBoard;
 
 public abstract class Piece {
     private final boolean isWhite;
@@ -29,7 +30,7 @@ public abstract class Piece {
         this.row = x;
         this.column = y;
     }
-    public abstract boolean[][] possibleMoves();
+    public abstract boolean[][] possibleMoves(ChessBoard chessBoard);
 
 //    protected ChessBorad getBoard() {
 //        return chessBoard;

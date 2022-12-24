@@ -1,6 +1,7 @@
 package pieces;
 
 
+import board.ChessBoard;
 import board.Position;
 
 
@@ -9,101 +10,100 @@ public class Queen extends Piece {
     public Queen(boolean isWhite) {
         super(isWhite, 'Q');
     }
-}
-//    public Queen(ChessBorad board, Color color) {
-//        super(board, color);
-//    }
-//
-//    public String toString(){
-//        return "A";
-//    }
-//
-//    @Override
-//    public boolean[][] possibleMoves() {
-//        boolean[][] mat = new boolean[8][8];
-//
-//        Position p = new Position(0, 0);
-//
-//        // above
-//        p.setValues(position.getRow() - 1, position.getColumn());
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setRow(p.getRow() - 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // left
-//        p.setValues(position.getRow(), position.getColumn() - 1);
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setColumn(p.getColumn() - 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // right
-//        p.setValues(position.getRow(), position.getColumn() + 1);
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setColumn(p.getColumn() + 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // below
-//        p.setValues(position.getRow() + 1, position.getColumn());
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setRow(p.getRow() + 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//        // northwest
-//        p.setValues(position.getRow() - 1, position.getColumn() - 1);
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setValues(p.getRow() - 1, p.getColumn() - 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // northeast
-//        p.setValues(position.getRow() - 1, position.getColumn() + 1);
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setValues(p.getRow() - 1, p.getColumn() + 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // southeast
-//        p.setValues(position.getRow() + 1 , position.getColumn() + 1);
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setValues(p.getRow() + 1, p.getColumn() + 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        // below
-//        p.setValues(position.getRow() + 1, position.getColumn() - 1 );
-//        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//            p.setValues(p.getRow() + 1, p.getColumn() - 1);
-//        }
-//        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-//            mat[p.getRow()][p.getColumn()] = true;
-//        }
-//
-//        return mat;
-//    }
 
+    public boolean[][] possibleMoves(ChessBoard chessBoard) {
+        boolean[][] mat = new boolean[8][8];
+        int x = this.piecePosition()[0];
+        int y = this.piecePosition()[1];
+        for(int i=y+1;i<8;i++){
+            Piece piece = chessBoard.getBoard()[x][i].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
+        }
+        for(int i=y-1;i>=0;i--){
+            Piece piece = chessBoard.getBoard()[x][i].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
+        }
+        for(int i=x-1;i>=0;i--){
+            Piece piece = chessBoard.getBoard()[i][y].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
+        }
+        for(int i=x+1;i<8;i++){
+            Piece piece = chessBoard.getBoard()[i][y].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
+        }
+        int i = x+1;
+        int j = y+1;
+        while (i<8 && j<8){
+            Piece piece = chessBoard.getBoard()[i][j].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[i][j] = true;
+                break;
+            }
+            mat[x][i] = true;
+            i++;
+            j++;
+        }
+        i = x-1;
+        j = y+1;
+        while (i>=0 && j<8){
+            Piece piece = chessBoard.getBoard()[i][j].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[i][j] = true;
+                break;
+            }
+            mat[x][i] = true;
+            i--;
+            j++;
+        }
+        i = x+1;
+        j = y-1;
+        while (i<8 && j>=0){
+            Piece piece = chessBoard.getBoard()[i][j].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[i][j] = true;
+                break;
+            }
+            mat[x][i] = true;
+            i++;
+            j--;
+        }
+        i = x-1;
+        j = y-1;
+        while (i>=0 && j>=0){
+            Piece piece = chessBoard.getBoard()[i][j].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[i][j] = true;
+                break;
+            }
+            mat[x][i] = true;
+            i--;
+            j--;
+        }
+        return mat;
+    }
+}
 

@@ -1,18 +1,10 @@
 package pieces;
-
-
-
 import board.ChessBoard;
 import board.Position;
-
 public class Rook extends Piece {
-
-
     public Rook(boolean isWhite) {
         super(isWhite,'R');
     }
-
-
     @Override
     public boolean[][] possibleMoves(ChessBoard chessBoard) {
         boolean[][] mat = new boolean[8][8];
@@ -20,62 +12,44 @@ public class Rook extends Piece {
         int x = this.piecePosition()[0];
         int y =this.piecePosition()[1];
 
-        for(int i=y && ;i<8)
-        // above
-        p.setValues(position.getRow() - 1, position.getColumn());
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() - 1);
+        for(int i=y+1;i<8;i++){
+            Piece piece = chessBoard.getBoard()[x][i].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
         }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
+        for(int i=y-1;i>=0;i--){
+            Piece piece = chessBoard.getBoard()[x][i].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
         }
-
-        // left
-        p.setValues(position.getRow(), position.getColumn() - 1);
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() - 1);
+        for(int i=x-1;i>=0;i--){
+            Piece piece = chessBoard.getBoard()[i][y].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
         }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
+        for(int i=x+1;i<8;i++){
+            Piece piece = chessBoard.getBoard()[i][y].getPiece();
+            if(piece != null) {
+                if (piece.getColor()!= this.getColor())
+                    mat[x][i] = true;
+                break;
+            }
+            mat[x][i] = true;
         }
-
-        // right
-        p.setValues(position.getRow(), position.getColumn() + 1);
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-            p.setColumn(p.getColumn() + 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-        }
-
-        // below
-        p.setValues(position.getRow() + 1, position.getColumn());
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() + 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getColumn()] = true;
-        }
-
         return mat;
     }
-
 }
-
-//    public Rook(ChessBorad board, Color color) {
-//        super(board, color);
-//    }
-//
-//    @Override
-//    public String toString(){
-//        return "T";
-//    }
-//
-//
-//
 
 
