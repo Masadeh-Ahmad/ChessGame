@@ -2,6 +2,8 @@ package pieces;
 
 import Game.Color;
 import board.ChessBoard;
+import board.Position;
+
 public abstract class Piece {
     private final Color color;
     protected final char icon;
@@ -23,6 +25,11 @@ public abstract class Piece {
         if(!isPlaced())
             return null;
         return new int[] {this.row,this.column};
+    }
+    public Position getPosition(ChessBoard chessBoard){
+        if(this.isPlaced())
+            return chessBoard.getBoard()[this.row][this.column];
+        return null;
     }
     public boolean isPlaced(){
         return (row != null && column != null);

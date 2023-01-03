@@ -3,6 +3,7 @@ package Game;
 
 import board.ChessBoard;
 import board.Position;
+import pieces.Piece;
 
 import java.util.Scanner;
 
@@ -30,21 +31,36 @@ public class ChessGame {
                 throw new RuntimeException();
         }
     }
+    private static void printPossibleMoves(int row,int column,ChessBoard chessBoard){
+        boolean [][] mat =  chessBoard.getBoard()[row][column].getPiece().possibleMoves(chessBoard);
+        chessBoard.printBoard(mat,row,column);
+    }
+
     public static void start(){
         Scanner sc = new Scanner(System.in);
         ChessBoard chessBoard = new ChessBoard("Ahmad","Ali");
         Position [][] board = chessBoard.getBoard();
         while (!chessBoard.testCheckMate(chessBoard.getTurn())){
-            board[1][0].removePiece();
+//            board[1][0].removePiece();
+//            Piece p = board[0][4].removePiece();
+//            board[3][4].setPiece(p);
             chessBoard.printBoard();
-            System.out.println("Enter next move (" +chessBoard.getTurn()+"): " );
+            System.out.println("Choose a piece to move (" +chessBoard.getTurn()+"): " );
             String nextMove = sc.nextLine();
-            int c = ColumnsConvert((char)nextMove.charAt(0));
-            int r =Character.getNumericValue(nextMove.charAt(1))-1 ;
-            boolean [][] mat =  board[r][c].getPiece().possibleMoves(chessBoard);
-            chessBoard.printBoard(mat,r,c);
-            break;
-
+            int SC = ColumnsConvert(nextMove.charAt(0));
+            int SR =Character.getNumericValue(nextMove.charAt(1))-1;
+            if(board[SR][SC].getPiece() != null && board[SR][SC].getPiece().getColor() == chessBoard.getTurn())
+                printPossibleMoves(SR,SC,chessBoard);
+            else
+                continue;
+            System.out.println("Choose a place to move the piece at (" +chessBoard.getTurn()+"): " );
+            nextMove = sc.nextLine();
+            int DC = ColumnsConvert(nextMove.charAt(0));
+            int DR =Character.getNumericValue(nextMove.charAt(1))-1;
+            if(!chessBoard.move(board[SR][SC],board[DR][DC],chessBoard.getTurn()))
+                continue;
+            chessBoard.printBoard();
+            chessBoard.switchTurn();
 
         }
         System.out.println(chessBoard.opponent().toString()+" Player Win");

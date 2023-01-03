@@ -16,7 +16,7 @@ public class King extends Piece {
         int x = this.piecePosition()[0];
         int y = this.piecePosition()[1];
         Position[][] board = chessBoard.getBoard();
-        if(x-1 > 0){
+        if(x-1 >= 0){
             if(chessBoard.canMove(board[x][y],board[x-1][y],this.getColor()))
                 mat[x - 1][y]=true;
             if(y+1 < 8){
@@ -25,7 +25,7 @@ public class King extends Piece {
                 if(chessBoard.canMove(board[x][y],board[x][y+1],this.getColor()))
                     mat[x][y + 1]=true;
             }
-            if(y-1 > 0){
+            if(y-1 >= 0){
                 if(chessBoard.canMove(board[x][y],board[x-1][y-1],this.getColor()))
                     mat[x - 1][y - 1]=true;
                 if(chessBoard.canMove(board[x][y],board[x][y-1],this.getColor()))
@@ -36,10 +36,10 @@ public class King extends Piece {
             if(chessBoard.canMove(board[x][y],board[x+1][y],this.getColor()))
                 mat[x + 1][y]=true;
             if(y+1 < 8){
-                if(chessBoard.canMove(board[x][y],board[x-1][y+1],this.getColor()))
+                if(chessBoard.canMove(board[x][y],board[x+1][y+1],this.getColor()))
                     mat[x + 1][y + 1]=true;
             }
-            if(y-1 > 0){
+            if(y-1 >= 0){
                 if(chessBoard.canMove(board[x][y],board[x+1][y-1],this.getColor()))
                     mat[x + 1][y - 1]=true;
             }

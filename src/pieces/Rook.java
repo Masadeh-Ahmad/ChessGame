@@ -17,16 +17,19 @@ public class Rook extends Piece {
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
         }
+        pieceInPresent =null;
         for(int i = y-1;i>=0 && pieceInPresent == null;i--){
             pieceInPresent = board[x][i].getPiece();
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
         }
+        pieceInPresent =null;
         for(int i = x-1;i>=0 && pieceInPresent == null;i--){
             pieceInPresent = board[i][y].getPiece();
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))
                 mat[i][y] = true;
         }
+        pieceInPresent =null;
         for(int i = x+1;i<8 && pieceInPresent == null;i++){
             pieceInPresent = board[i][y].getPiece();
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))

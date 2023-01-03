@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a64a2d6-251e-45ab-9150-acca8e5a0e99" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Columns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Player.java" afterDir="false" />
+    <list default="true" id="ffceb475-fa91-4c61-843f-86c23fcead4b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/ChessPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/board/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/King.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Pawn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,13 +47,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Tomcat/Projects/chess-terminal-console-master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomcat/Projects/chess-terminal-console-master&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tomcat\Projects\ChessGame\src" />
