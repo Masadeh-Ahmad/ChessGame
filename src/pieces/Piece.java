@@ -1,38 +1,31 @@
 package pieces;
 
-import Game.Color;
+import game.Color;
 import board.ChessBoard;
 import board.Position;
 
 public abstract class Piece {
     private final Color color;
-    protected final char icon;
-    private Integer row;
-    private  Integer column;
-    public Piece(Color color,char icon) {
+    private final char icon;
+
+    private Position position;
+    protected Piece(Color color,char icon) {
        this.color = color;
        this.icon = icon;
     }
-    public void placePiece(int x, int y){
-        this.row = x;
-        this.column = y;
+    public void placePiece(Position position){
+        this.position = position;
     }
     public void unPlacePiece(){
-        this.row = null;
-        this.column = null;
+        this.position = null;
     }
-    public int[] piecePosition(){
-        if(!isPlaced())
-            return null;
-        return new int[] {this.row,this.column};
-    }
-    public Position getPosition(ChessBoard chessBoard){
+    public Position getPosition(){
         if(this.isPlaced())
-            return chessBoard.getBoard()[this.row][this.column];
+            return position;
         return null;
     }
     public boolean isPlaced(){
-        return (row != null && column != null);
+        return (position != null);
     }
     public Color getColor(){
         return color;

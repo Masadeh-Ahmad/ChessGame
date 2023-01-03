@@ -1,13 +1,8 @@
-import Game.ChessGame;
-import board.ChessBoard;
-
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import exceptions.ChessException;
+import game.ChessGame;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ChessException {
         ChessGame.start();
     }
 }

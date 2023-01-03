@@ -1,6 +1,6 @@
 package pieces;
 
-import Game.Color;
+import game.Color;
 import board.ChessBoard;
 import board.Position;
 
@@ -10,8 +10,8 @@ public class Bishop extends Piece {
     }
 
     public static void bishopMoves(boolean[][] mat,Piece piece, ChessBoard chessBoard) {
-        int x = piece.piecePosition()[0];
-        int y = piece.piecePosition()[1];
+        int x = piece.getPosition().getRow();
+        int y = piece.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
         int i = x + 1;
         int j = y + 1;

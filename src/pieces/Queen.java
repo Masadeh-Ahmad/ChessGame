@@ -1,6 +1,6 @@
 package pieces;
 
-import Game.Color;
+import game.Color;
 import board.ChessBoard;
 import static pieces.Rook.rookMoves;
 import static pieces.Bishop.bishopMoves;

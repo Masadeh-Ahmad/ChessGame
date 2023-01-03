@@ -1,6 +1,6 @@
 package pieces;
 
-import Game.Color;
+import game.Color;
 import board.ChessBoard;
 import board.Position;
 
@@ -13,8 +13,8 @@ public class King extends Piece {
     @Override
     public boolean[][] possibleMoves(ChessBoard chessBoard) {
         boolean[][] mat = new boolean[8][8];
-        int x = this.piecePosition()[0];
-        int y = this.piecePosition()[1];
+        int x = this.getPosition().getRow();
+        int y = this.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
         if(x-1 >= 0){
             if(chessBoard.canMove(board[x][y],board[x-1][y],this.getColor()))
@@ -35,13 +35,11 @@ public class King extends Piece {
         if(x+1 < 8){
             if(chessBoard.canMove(board[x][y],board[x+1][y],this.getColor()))
                 mat[x + 1][y]=true;
-            if(y+1 < 8){
-                if(chessBoard.canMove(board[x][y],board[x+1][y+1],this.getColor()))
-                    mat[x + 1][y + 1]=true;
+            if(y+1 < 8 && chessBoard.canMove(board[x][y],board[x+1][y+1],this.getColor())){
+                mat[x + 1][y + 1]=true;
             }
-            if(y-1 >= 0){
-                if(chessBoard.canMove(board[x][y],board[x+1][y-1],this.getColor()))
-                    mat[x + 1][y - 1]=true;
+            if(y-1 >= 0 && chessBoard.canMove(board[x][y],board[x+1][y-1],this.getColor())){
+                mat[x + 1][y - 1]=true;
             }
         }
         return mat;

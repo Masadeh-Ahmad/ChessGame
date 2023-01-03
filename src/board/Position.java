@@ -25,12 +25,12 @@ public class Position {
         if( this.piece != null)
             removePiece();
         this.piece = piece;
-        this.piece.placePiece(this.row,this.column);
+        this.piece.placePiece(this);
     }
     public Piece removePiece(){
-        Piece piece = this.piece;
+        Piece p = this.piece;
         piece.unPlacePiece();
         this.piece = null;
-        return piece;
+        return p;
     }
 }

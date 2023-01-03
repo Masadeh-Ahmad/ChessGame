@@ -1,5 +1,5 @@
 package pieces;
-import Game.Color;
+import game.Color;
 import board.ChessBoard;
 import board.Position;
 public class Rook extends Piece {
@@ -7,8 +7,8 @@ public class Rook extends Piece {
         super(color,'R');
     }
     public static void rookMoves(boolean[][] mat,Piece piece, ChessBoard chessBoard) {
-        int x = piece.piecePosition()[0];
-        int y =piece.piecePosition()[1];
+        int x = piece.getPosition().getRow();
+        int y = piece.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
         Piece pieceInPresent =null;
 
