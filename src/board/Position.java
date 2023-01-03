@@ -22,9 +22,15 @@ public class Position {
         return this.piece;
     }
     public void setPiece(Piece piece){
-        if( this.piece != null && this.piece.getColor() == piece.getColor())
-            throw new RuntimeException("Cant move at this place");
+        if( this.piece != null)
+            removePiece();
         this.piece = piece;
         this.piece.placePiece(this.row,this.column);
+    }
+    public Piece removePiece(){
+        Piece piece = this.piece;
+        piece.unPlacePiece();
+        this.piece = null;
+        return piece;
     }
 }
