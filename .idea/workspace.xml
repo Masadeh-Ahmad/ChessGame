@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffceb475-fa91-4c61-843f-86c23fcead4b" name="Changes" comment="add">
-      <change afterPath="$PROJECT_DIR$/src/board/View.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/ChessException.java" afterDir="false" />
+    <list default="true" id="1aa357ea-e37a-4d2c-9b26-414360ab7294" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Columns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Columns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/board/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/ChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/board/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ChessGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Columns.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="editable-svg" />
       </list>
     </option>
   </component>
@@ -58,10 +50,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomcat/Projects/chess-terminal-console-master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomcat/Projects/ChessGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -87,11 +86,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ffceb475-fa91-4c61-843f-86c23fcead4b" name="Changes" comment="add" />
+      <changelist id="1aa357ea-e37a-4d2c-9b26-414360ab7294" name="Changes" comment="" />
       <created>1671554100137</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671554100137</updated>
+      <workItem from="1672988137774" duration="1592000" />
+      <workItem from="1672991073899" duration="633000" />
+      <workItem from="1672995003007" duration="11585000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1672732178257</created>
@@ -102,6 +104,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -115,6 +120,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add" />
     <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
@@ -124,5 +130,9 @@
         <watch expression="mat[4]" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

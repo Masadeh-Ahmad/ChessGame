@@ -7,7 +7,6 @@ import board.Position;
 public abstract class Piece {
     private final Color color;
     private final char icon;
-
     private Position position;
     protected Piece(Color color,char icon) {
        this.color = color;

@@ -14,15 +14,17 @@ public class Position {
     public int getRow() {
         return row;
     }
-
     public int getColumn() {
         return column;
     }
     public Piece getPiece(){
         return this.piece;
     }
+    public boolean pieceExist(){
+        return (this.piece != null);
+    }
     public void setPiece(Piece piece){
-        if( this.piece != null)
+        if(pieceExist())
             removePiece();
         this.piece = piece;
         this.piece.placePiece(this);

@@ -47,7 +47,7 @@ public class ChessGame {
 
     public static void start() throws ChessException {
         Scanner sc = new Scanner(System.in);
-        ChessBoard chessBoard = new ChessBoard("Ahmad","Ali",30);
+        ChessBoard chessBoard = new ChessBoard(30);
         Position [][] board = chessBoard.getBoard();
         Pattern pattern = Pattern.compile("[a-h][1-8]");
         Matcher matcher;
@@ -71,7 +71,7 @@ public class ChessGame {
                 sourceRow =Character.getNumericValue(nextMove.charAt(1))-1;
                 if(board[sourceRow][sourceColumn].getPiece() == null)
                     throw new ChessException("There is no piece in this position");
-                else if(board[sourceRow][sourceColumn].getPiece().getColor() != chessBoard.getTurn() || !chessBoard.canMove(board[sourceRow][sourceColumn].getPiece()))
+                else if(board[sourceRow][sourceColumn].getPiece().getColor() != chessBoard.getTurn() || chessBoard.isBlocked(board[sourceRow][sourceColumn].getPiece()))
                     throw new ChessException("You can't move this piece");
                 printPossibleMoves(sourceRow,sourceColumn,chessBoard);
 
@@ -94,7 +94,10 @@ public class ChessGame {
                 continue;
             }
         }
-        System.out.println(chessBoard.opponent().toString()+" Player Win");
+        if(chessBoard.getNumOfMoves() < 1)
+            System.out.println("Draw");
+        else
+            System.out.println(chessBoard.opponent().toString()+" Player Win");
 
     }
 }

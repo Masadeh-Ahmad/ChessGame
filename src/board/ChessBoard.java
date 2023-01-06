@@ -1,70 +1,20 @@
 package board;
-
 import game.Color;
-import game.Player;
 import pieces.*;
 
 import java.util.ArrayList;
-
 public class ChessBoard {
-
     private final Position[][] positions;
-    private Position whiteKingPosition;
-    private Position blackKingPosition;
-    private final ArrayList<Piece> whitePieces;
-    private final ArrayList<Piece> blackPieces;
-    private final Player player1;
-    private final Player player2;
+    private final ArrayList<Piece> pieces;
     private Color turn;
     private int numOfMoves;
-
-    public ChessBoard(String username1,String username2,int numOfMoves) {
+    public ChessBoard(int numOfMoves) {
         this.positions = new Position[8][8];
         this.numOfMoves = numOfMoves;
-        this.player1 = new Player(username1);
-        this.player2 = new Player(username2);
-        player1.setColor(Color.WHITE);
-        player2.setColor(Color.BLACK);
-
-        whitePieces = new ArrayList<>();
-        blackPieces = new ArrayList<>();
-
+        pieces = new ArrayList<>();
         this.turn = Color.WHITE;
-
         initializeBoard();
-
-        this.whiteKingPosition = positions[0][4];
-        this.blackKingPosition = positions[7][4];
     }
-    public Color switchTurn(){
-     if(this.turn == Color.WHITE)
-         this.turn = Color.BLACK;
-     else
-         this.turn = Color.WHITE;
-     return this.turn;
-    }
-    public Color opponent(){
-        if(this.turn == Color.WHITE)
-            return Color.BLACK;
-        else
-            return Color.WHITE;
-    }
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public Color getTurn() {
-        return turn;
-    }
-
-    public int getNumOfMoves() {
-        return numOfMoves;
-    }
-
     private void initializeBoard() {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
@@ -91,58 +41,45 @@ public class ChessBoard {
         for (int i = 0; i < 8; i++) {
             this.positions[1][i].setPiece(new Pawn(Color.WHITE));
             this.positions[6][i].setPiece(new Pawn(Color.BLACK));
-            whitePieces.add(positions[0][i].getPiece());
-            whitePieces.add(positions[1][i].getPiece());
-            blackPieces.add(positions[6][i].getPiece());
-            blackPieces.add(positions[7][i].getPiece());
+            pieces.add(positions[0][i].getPiece());
+            pieces.add(positions[1][i].getPiece());
+            pieces.add(positions[6][i].getPiece());
+            pieces.add(positions[7][i].getPiece());
         }
     }
     public Position[][] getBoard() {
         return this.positions;
     }
-    private Position getBlackKingPosition() {
-        return blackKingPosition;
+    public Color getTurn() {
+        return turn;
     }
-
-    private Position getWhiteKingPosition() {
-        return whiteKingPosition;
+    public int getNumOfMoves() {
+        return numOfMoves;
     }
-
-    private void setWhiteKingPosition(Position whiteKingPosition) {
-        this.whiteKingPosition = whiteKingPosition;
-    }
-
-    private void setBlackKingPosition(Position blackKingPosition) {
-        this.blackKingPosition = blackKingPosition;
-    }
-    public boolean canMove(Position source,Position destination,Color color){
-        Piece sourcePiece = source.getPiece();
-        Piece destinationPiece = destination.getPiece();
-        return sourcePiece != null && (destinationPiece == null || destinationPiece.getColor() != color);
-    }
-    public boolean canMove(Piece piece){
-        boolean[][] mat = piece.possibleMoves(this);
-        for (boolean[] row : mat)
-            for (boolean p : row)
-                if(p)
-                    return true;
-        return false;
-    }
-    public boolean testCheck(Color color) {
-        Position kingPosition;
-        if(color == Color.WHITE)
-            kingPosition = getWhiteKingPosition();
+    public Color switchTurn(){
+        if(this.turn == Color.WHITE)
+            this.turn = Color.BLACK;
         else
-            kingPosition = getBlackKingPosition();
-        for (Position[] row : positions) {
-            for(Position p : row){
-                Piece piece = p.getPiece();
-                if (piece != null && piece.getColor() != color) {
-                    boolean[][] mat = piece.possibleMoves(this);
-                    if (mat[kingPosition.getRow()][kingPosition.getColumn()]) {
-                        return true;
-                    }
-                }
+            this.turn = Color.WHITE;
+        return this.turn;
+    }
+    public Color opponent(){
+        if(this.turn == Color.WHITE)
+            return Color.BLACK;
+        else
+            return Color.WHITE;
+    }
+
+    public boolean testCheck(Color color) {
+        Position kingPosition = null;
+        for(Piece piece: pieces){
+            if(piece instanceof King && piece.getColor() == color)
+                kingPosition = piece.getPosition();
+        }
+        for(Piece piece : pieces.stream().filter(p -> p.isPlaced() && p.getColor() != color).toArray(Piece[]::new)){
+            boolean[][] mat = piece.possibleMoves(this);
+            if (kingPosition!=null && mat[kingPosition.getRow()][kingPosition.getColumn()]) {
+                return true;
             }
         }
         return false;
@@ -150,67 +87,57 @@ public class ChessBoard {
     public boolean testCheckMate(Color color) {
         if(!testCheck(color))
             return false;
-        ArrayList<Piece> pieces;
-        if(color == Color.WHITE)
-            pieces = whitePieces;
-        else
-            pieces = blackPieces;
-        for(Piece piece : pieces){
-            if(piece.isPlaced()){
-                boolean [][] mat = piece.possibleMoves(this);
-                for (int i = 0; i < 8; i++)
-                    for (int j = 0; j < 8; j++){
-                        if(mat[i][j] && tryMove(piece.getPosition(),positions[i][j],color))
-                            return false;
-                    }
-            }
+        for(Piece piece : pieces.stream().filter(p -> p.isPlaced() && p.getColor() == color).toArray(Piece[]::new)){
+            boolean [][] mat = piece.possibleMoves(this);
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++){
+                    if(mat[i][j] && tryMove(piece.getPosition(),positions[i][j],color))
+                        return false;
+                }
         }
         return true;
     }
+    public boolean canMove(Position source,Position destination,Color color){
+        Piece sourcePiece = source.getPiece();
+        Piece destinationPiece = destination.getPiece();
+        return sourcePiece != null && (destinationPiece == null || destinationPiece.getColor() != color);
+    }
+    public boolean isBlocked(Piece piece){
+        boolean[][] mat = piece.possibleMoves(this);
+        for (boolean[] row : mat)
+            for (boolean p : row)
+                if(p)
+                    return false;
+        return true;
+    }
+    private void undoMove(Position source,Position destination,Piece piece){
+        source.setPiece(destination.removePiece());
+        if(piece != null)
+            destination.setPiece(piece);
+    }
     private boolean tryMove(Position source,Position destination,Color color) {
-        boolean canMove = true;
         Piece sourcePiece = source.getPiece();
         Piece destinationPiece = destination.getPiece();
         if(sourcePiece == null || sourcePiece.getColor() != color)
             return false;
-        boolean [][] mat ;
-        mat = sourcePiece.possibleMoves(this);
+        boolean [][] mat = sourcePiece.possibleMoves(this);
         if(mat[destination.getRow()][destination.getColumn()]) {
             destination.setPiece(source.removePiece());
         }
-        if(destination.getPiece() instanceof King){
-            if(color == Color.WHITE)
-                setWhiteKingPosition(destination.getPiece().getPosition());
-            else
-                setBlackKingPosition(destination.getPiece().getPosition());
+        if(testCheck(color)) {
+            undoMove(source, destination, destinationPiece);
+            return false;
         }
-        if(testCheck(color))
-            canMove = false;
-        source.setPiece(destination.removePiece());
-        if(source.getPiece() instanceof King){
-            if(color == Color.WHITE)
-                setWhiteKingPosition(source.getPiece().getPosition());
-            else
-                setBlackKingPosition(source.getPiece().getPosition());
-        }
-        if(destinationPiece != null)
-            destination.setPiece(destinationPiece);
-        return canMove;
+        undoMove(source, destination, destinationPiece);
+        return true;
     }
     public boolean move(Position source,Position destination,Color color){
 
         if(tryMove(source,destination,color)){
             destination.setPiece(source.removePiece());
             this.numOfMoves--;
-            if(destination.getPiece() instanceof King){
-                if(color == Color.WHITE)
-                    setWhiteKingPosition(destination.getPiece().getPosition());
-                else
-                    setBlackKingPosition(destination.getPiece().getPosition());
-            }
             return true;
         }
         return false;
-
     }
 }
