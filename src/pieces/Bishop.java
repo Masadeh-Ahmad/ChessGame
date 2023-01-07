@@ -13,6 +13,7 @@ public class Bishop extends Piece {
         int x = piece.getPosition().getRow();
         int y = piece.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
+        // NorthEast
         int i = x + 1;
         int j = y + 1;
         while (i < 8 && j < 8 ) {
@@ -23,6 +24,7 @@ public class Bishop extends Piece {
             i++;
             j++;
         }
+        // SouthEast
         i = x - 1;
         j = y + 1;
         while (i >= 0 && j < 8) {
@@ -33,6 +35,7 @@ public class Bishop extends Piece {
             i--;
             j++;
         }
+        // NorthWest
         i = x + 1;
         j = y - 1;
         while (i < 8 && j >= 0) {
@@ -43,6 +46,7 @@ public class Bishop extends Piece {
             i++;
             j--;
         }
+        // SouthWest
         i = x - 1;
         j = y - 1;
         while (i >= 0 && j >= 0) {

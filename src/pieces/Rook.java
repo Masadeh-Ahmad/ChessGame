@@ -10,28 +10,28 @@ public class Rook extends Piece {
         int x = piece.getPosition().getRow();
         int y = piece.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
-
+        // East
         for(int i = y+1;i<8;i++) {
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
             if(board[x][i].pieceExist())
                 break;
         }
-
+        // West
         for(int i = y-1;i>=0;i--) {
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
             if(board[x][i].pieceExist())
                 break;
         }
-
+        // South
         for(int i = x-1;i>=0;i--) {
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))
                 mat[i][y] = true;
             if(board[i][y].pieceExist())
                 break;
         }
-
+        // North
         for(int i = x+1;i<8;i++) {
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))
                 mat[i][y] = true;
