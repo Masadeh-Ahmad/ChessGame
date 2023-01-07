@@ -3,7 +3,6 @@ package pieces;
 import game.Color;
 import board.ChessBoard;
 import board.Position;
-
 public abstract class Piece {
     private final Color color;
     private final char icon;

@@ -1,0 +1,13 @@
+test "try to move piece when there is check"
+
+move e2 e3
+move a7 a6
+move d1 h5
+move a6 a5
+move h5 f7
+
+move c7 c6
+
+"in this situation you can only do move to break the check" 
+
+move e8 f7

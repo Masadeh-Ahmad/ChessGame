@@ -1,0 +1,3 @@
+test "try to move blocked piece"
+
+move d1 g4

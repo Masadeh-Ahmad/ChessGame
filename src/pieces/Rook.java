@@ -10,31 +10,35 @@ public class Rook extends Piece {
         int x = piece.getPosition().getRow();
         int y = piece.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
-        Piece pieceInPresent =null;
 
-        for(int i = y+1;i<8 && pieceInPresent == null;i++){
-            pieceInPresent = board[x][i].getPiece();
+        for(int i = y+1;i<8;i++) {
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
+            if(board[x][i].pieceExist())
+                break;
         }
-        pieceInPresent =null;
-        for(int i = y-1;i>=0 && pieceInPresent == null;i--){
-            pieceInPresent = board[x][i].getPiece();
+
+        for(int i = y-1;i>=0;i--) {
             if (chessBoard.canMove(board[x][y], board[x][i], piece.getColor()))
                 mat[x][i] = true;
+            if(board[x][i].pieceExist())
+                break;
         }
-        pieceInPresent =null;
-        for(int i = x-1;i>=0 && pieceInPresent == null;i--){
-            pieceInPresent = board[i][y].getPiece();
+
+        for(int i = x-1;i>=0;i--) {
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))
                 mat[i][y] = true;
+            if(board[i][y].pieceExist())
+                break;
         }
-        pieceInPresent =null;
-        for(int i = x+1;i<8 && pieceInPresent == null;i++){
-            pieceInPresent = board[i][y].getPiece();
+
+        for(int i = x+1;i<8;i++) {
             if (chessBoard.canMove(board[x][y], board[i][y], piece.getColor()))
                 mat[i][y] = true;
+            if(board[i][y].pieceExist())
+                break;
         }
+
     }
     @Override
     public boolean[][] possibleMoves(ChessBoard chessBoard) {

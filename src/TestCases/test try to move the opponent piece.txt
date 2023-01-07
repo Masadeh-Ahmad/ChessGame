@@ -1,0 +1,3 @@
+test "try to move the opponent piece"
+
+move a7 a6

@@ -1,0 +1,7 @@
+test "check"
+
+move e2 e3
+move a7 a6
+move d1 h5
+move a6 a5
+move h5 f7

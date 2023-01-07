@@ -14,29 +14,29 @@ public class Pawn extends Piece {
         int y = this.getPosition().getColumn();
         Position[][] board = chessBoard.getBoard();
         if (this.getColor()==Color.WHITE) {
-            if (x + 1 < 8 && y + 1 < 8 && board[x+1][y+1].getPiece() != null && chessBoard.canMove(board[x][y],board[x+1][y+1],this.getColor())) {
+            if (x + 1 < 8 && y + 1 < 8 && board[x+1][y+1].pieceExist() && chessBoard.canMove(board[x][y],board[x+1][y+1],this.getColor())) {
                 mat[x + 1][y + 1] = true;
             }
-            if (x + 1 < 8 && y - 1 > 0 && board[x+1][y-1].getPiece() != null && chessBoard.canMove(board[x][y],board[x+1][y-1],this.getColor())) {
+            if (x + 1 < 8 && y - 1 > 0 && board[x+1][y-1].pieceExist() && chessBoard.canMove(board[x][y],board[x+1][y-1],this.getColor())) {
                 mat[x + 1][y - 1] = true;
             }
-            if (x + 1 < 8 && board[x+1][y].getPiece() == null && chessBoard.canMove(board[x][y],board[x+1][y],this.getColor())) {
+            if (x + 1 < 8 && !board[x+1][y].pieceExist() && chessBoard.canMove(board[x][y],board[x+1][y],this.getColor())) {
                 mat[x+1][y] = true;
-                if (x == 1 && board[x+2][y].getPiece() == null && chessBoard.canMove(board[x][y],board[x+2][y],this.getColor())) {
+                if (x == 1 && !board[x+2][y].pieceExist() && chessBoard.canMove(board[x][y],board[x+2][y],this.getColor())) {
                     mat[x+2][y] = true;
                 }
             }
         }
         else {
-            if (x - 1 > 0 && y + 1 < 8 && board[x-1][y+1].getPiece() != null && chessBoard.canMove(board[x][y],board[x-1][y+1],this.getColor())) {
+            if (x - 1 > 0 && y + 1 < 8 && board[x-1][y+1].pieceExist() && chessBoard.canMove(board[x][y],board[x-1][y+1],this.getColor())) {
                 mat[x - 1][y + 1] = true;
             }
-            if (x - 1 > 0 && y - 1 > 0 && board[x-1][y-1].getPiece() != null && chessBoard.canMove(board[x][y],board[x-1][y-1],this.getColor())) {
+            if (x - 1 > 0 && y - 1 > 0 && board[x-1][y-1].pieceExist() && chessBoard.canMove(board[x][y],board[x-1][y-1],this.getColor())) {
                 mat[x - 1][y - 1] = true;
             }
-            if (x - 1 > 0 && board[x-1][y].getPiece() == null && chessBoard.canMove(board[x][y],board[x-1][y],this.getColor())) {
+            if (x - 1 > 0 && !board[x-1][y].pieceExist() && chessBoard.canMove(board[x][y],board[x-1][y],this.getColor())) {
                 mat[x-1][y] = true;
-                if (x == 6 && board[x-2][y].getPiece() == null && chessBoard.canMove(board[x][y],board[x-2][y],this.getColor())) {
+                if (x == 6 && !board[x-2][y].pieceExist() && chessBoard.canMove(board[x][y],board[x-2][y],this.getColor())) {
                     mat[x-2][y] = true;
                 }
             }

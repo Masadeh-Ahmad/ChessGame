@@ -15,46 +15,45 @@ public class Bishop extends Piece {
         Position[][] board = chessBoard.getBoard();
         int i = x + 1;
         int j = y + 1;
-        Piece pieceInPresent =null;
-        while (i < 8 && j < 8 && pieceInPresent == null) {
-            pieceInPresent = board[i][j].getPiece();
+        while (i < 8 && j < 8 ) {
             if (chessBoard.canMove(board[x][y], board[i][j], piece.getColor()))
                 mat[i][j] = true;
+            if(board[i][j].pieceExist())
+                break;
             i++;
             j++;
         }
         i = x - 1;
         j = y + 1;
-        pieceInPresent =null;
-        while (i >= 0 && j < 8 && pieceInPresent == null) {
-            pieceInPresent = board[i][j].getPiece();
+        while (i >= 0 && j < 8) {
             if (chessBoard.canMove(board[x][y], board[i][j], piece.getColor()))
                 mat[i][j] = true;
+            if(board[i][j].pieceExist())
+                break;
             i--;
             j++;
         }
         i = x + 1;
         j = y - 1;
-        pieceInPresent =null;
-        while (i < 8 && j >= 0 && pieceInPresent == null) {
-            pieceInPresent = board[i][j].getPiece();
+        while (i < 8 && j >= 0) {
             if (chessBoard.canMove(board[x][y], board[i][j], piece.getColor()))
                 mat[i][j] = true;
+            if(board[i][j].pieceExist())
+                break;
             i++;
             j--;
         }
         i = x - 1;
         j = y - 1;
-        pieceInPresent =null;
-        while (i >= 0 && j >= 0 && pieceInPresent == null) {
-            pieceInPresent = board[i][j].getPiece();
+        while (i >= 0 && j >= 0) {
             if (chessBoard.canMove(board[x][y], board[i][j], piece.getColor()))
                 mat[i][j] = true;
+            if(board[i][j].pieceExist())
+                break;
             i--;
             j--;
         }
     }
-
     @Override
     public boolean[][] possibleMoves(ChessBoard chessBoard) {
         boolean[][] mat = new boolean[8][8];

@@ -98,9 +98,8 @@ public class ChessBoard {
         return true;
     }
     public boolean canMove(Position source,Position destination,Color color){
-        Piece sourcePiece = source.getPiece();
         Piece destinationPiece = destination.getPiece();
-        return sourcePiece != null && (destinationPiece == null || destinationPiece.getColor() != color);
+        return source.pieceExist() && (!destination.pieceExist() || destinationPiece.getColor() != color);
     }
     public boolean isBlocked(Piece piece){
         boolean[][] mat = piece.possibleMoves(this);
@@ -118,16 +117,18 @@ public class ChessBoard {
     private boolean tryMove(Position source,Position destination,Color color) {
         Piece sourcePiece = source.getPiece();
         Piece destinationPiece = destination.getPiece();
-        if(sourcePiece == null || sourcePiece.getColor() != color)
+        if(!source.pieceExist() || sourcePiece.getColor() != color)
             return false;
         boolean [][] mat = sourcePiece.possibleMoves(this);
         if(mat[destination.getRow()][destination.getColumn()]) {
             destination.setPiece(source.removePiece());
+            if(testCheck(color)) {
+                undoMove(source, destination, destinationPiece);
+                return false;
+            }
         }
-        if(testCheck(color)) {
-            undoMove(source, destination, destinationPiece);
+        else
             return false;
-        }
         undoMove(source, destination, destinationPiece);
         return true;
     }
